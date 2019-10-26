@@ -1,13 +1,16 @@
 import os
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
 from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
+CORS(app, resources={r'/*': {'origins': '*'}})
 
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
 
 from models import Path
 
@@ -28,7 +31,7 @@ def add_path():
     pth = Path(svg=body['svg'],
                zoom=body['zoom'],
                lat=body['lat'],
-               lng=body['lng'] 
+               lng=body['lng']
                )
     db.session.add(pth)
     db.session.commit()
