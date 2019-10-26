@@ -12,8 +12,11 @@ class Path(db.Model):
     def __repr__(self):
         return '<Path %r>' % self.id
 
-    def __init__(self, svg):
+    def __init__(self, svg, zoom, lat, lng):
         self.svg = svg
+        self.zoom = zoom
+        self.lat = lat
+        self.lng = lng
 
     def serialize(self):
         return {
