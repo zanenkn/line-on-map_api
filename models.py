@@ -6,8 +6,8 @@ class Path(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     svg = db.Column(db.Text, nullable=False)
     zoom = db.Column(db.Float, nullable=False)
-    lat = db.Column(db.Integer, nullable=False)
-    lng = db.Column(db.Integer, nullable=False)
+    lat = db.Column(db.Float, nullable=False)
+    lng = db.Column(db.Float, nullable=False)
 
     def __repr__(self):
         return '<Path %r>' % self.id
